@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "오늘의 점심",
+    "slug": "lunch-picker",
+    "scheme": "lunchpicker",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "plugins": [
+      "expo-router",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "주변 음식점을 찾기 위해 현재 위치를 사용합니다."
+        }
+      ],
+      "expo-secure-store"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

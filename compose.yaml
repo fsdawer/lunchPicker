@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgis/postgis:16-3.7
+    platform: linux/amd64
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: lunchpicker
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD before running Docker Compose}
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - lunchpicker_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U lunchpicker -d postgres"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  lunchpicker_postgres_data:
